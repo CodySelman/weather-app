@@ -8,7 +8,7 @@ const HourlyWeather = props => {
           <li>Summary: {props.summary}</li>
           <li>Icon: {props.icon}</li>
           <li>Time: {props.time}</li>
-          <li>Temperature: {props.temperature}</li>
+          <li>Temperature: {props.temperature}&deg;F</li>
         </ul>
       </section>
     )
