@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {getWeather} from './services/weather';
+import { isEmptyObject } from './utils';
 import HourlyWeather from './HourlyWeather';
 
 class App extends Component {
@@ -50,7 +51,7 @@ class App extends Component {
           <input onChange={(e)=>this.handleLonChange(e)} value={this.state.lon} step='.0001' type="number"/>
           <button type='submit'>Get the Weather</button>
         </form>
-        {Object.keys(this.state.hourlyWeather).length === 0 ?
+        { isEmptyObject(this.state.hourlyWeather) ?
           "" :
             <HourlyWeather {...this.state.hourlyWeather}/>}
       </div>
