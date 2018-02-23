@@ -1,19 +1,7 @@
 import React, { Component } from 'react';
 
 import {getWeather} from './services/weather';
-
-const HourlyWeather = props => {
-  return (
-    <section>
-      <ul>
-        <li>Summary: {props.summary}</li>
-        <li>Icon: {props.icon}</li>
-        <li>Time: {props.time}</li>
-        <li>Temperature: {props.temperature}</li>
-      </ul>
-    </section>
-  )
-}
+import HourlyWeather from './HourlyWeather';
 
 class App extends Component {
   constructor(){
