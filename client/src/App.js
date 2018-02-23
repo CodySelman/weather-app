@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 
 import {getWeather} from './services/weather';
 
+const HourlyWeather = props => {
+  return (
+    <section>
+      <ul>
+        <li>Summary: {props.summary}</li>
+        <li>Icon: {props.icon}</li>
+        <li>Time: {props.time}</li>
+        <li>Temperature: {props.temperature}</li>
+      </ul>
+    </section>
+  )
+}
+
 class App extends Component {
   constructor(){
     super();
@@ -28,7 +41,8 @@ class App extends Component {
     e.preventDefault();
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
-        const hourlyWeather = response.data.hourly;
+        // temporarily importing just the current hours data here
+        const hourlyWeather = response.data.hourly.data[0];
         this.setState({
           hourlyWeather: hourlyWeather
         });
@@ -48,7 +62,9 @@ class App extends Component {
           <input onChange={(e)=>this.handleLonChange(e)} value={this.state.lon} step='.0001' type="number"/>
           <button type='submit'>Get the Weather</button>
         </form>
-        {JSON.stringify(this.state.hourlyWeather, null, 4)}
+        {Object.keys(this.state.hourlyWeather).length === 0 ?
+          "" :
+            <HourlyWeather {...this.state.hourlyWeather}/>}
       </div>
     );
   }
