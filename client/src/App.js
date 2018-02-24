@@ -13,7 +13,6 @@ class App extends Component {
       lon: 0,
       hourlyWeather: {},
       error: null,
-      streetAddress: '',
       city: '',
       state: '',
     };
@@ -21,6 +20,7 @@ class App extends Component {
     this.handleLonChange = this.handleLonChange.bind(this);
     this.handleLatLonSubmit = this.handleLatLonSubmit.bind(this);
     this.geolocation = this.geolocation.bind(this);
+    this.handleAddressSubmit = this.handleAddressSubmit.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -77,7 +77,7 @@ class App extends Component {
   handleAddressSubmit(e){
     e.preventDefault();
     console.log('submitting address');
-    addressLookup(this.state.streetAddress, this.state.city, this.state.state)
+    addressLookup(this.state.city, this.state.state)
       .then(response => {
         console.log(response);
       })
@@ -118,11 +118,6 @@ class App extends Component {
         <button onClick={this.geolocation}>Use Geolocation</button>
         <h3>Or Use Address:</h3>
         <form onSubmit={e => this.handleAddressSubmit(e)}>
-          <label>Street Address</label>
-          <input 
-            type="text"
-            value={this.state.streetAddress}
-            onChange={e => this.handleStreetAddressChange(e)} />
           <label>City</label>
           <input 
             type="text" 
