@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { getWeather } from "./services/weather";
+import { addressLookup } from './services/addressLookup';
 import { isEmptyObject } from "./utils";
 import HourlyWeather from "./HourlyWeather";
 
@@ -68,7 +69,7 @@ class App extends Component {
       city: e.target.value
     });
   }
-  handleStateChange(e){
+  handleStateChange(e){ 
     this.setState({
       state: e.target.value
     });
@@ -76,6 +77,16 @@ class App extends Component {
   handleAddressSubmit(e){
     e.preventDefault();
     console.log('submitting address');
+    addressLookup(this.state.streetAddress, this.state.city, this.state.state)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          error: 'addressLookup failed'
+        });
+      });
   }
   render() {
     return (

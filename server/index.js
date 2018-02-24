@@ -25,8 +25,9 @@ serverApp.get('/forecast/:lat,:lon', function(request, response){
     });
 });
 
-serverApp.get('./geocode/', function(request, response) {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${GOOGLEMAPS_API_KEY}`;
+serverApp.get('/geocode/:streetAddress,:city,:state', function(request, response) {
+    const { streetAddress, city, state } = request.params;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${streetAddress},+${city},+${state}&key=${GOOGLEMAPS_API_KEY}`;
     axios.get(url)
         .then(res => {
             response.status(200).json(res.data);
