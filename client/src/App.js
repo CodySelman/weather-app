@@ -16,6 +16,7 @@ class App extends Component {
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.geolocation = this.geolocation.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -44,6 +45,11 @@ class App extends Component {
         });
       });
   }
+  geolocation(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position.coords);
+    });
+  }
   render() {
     return (
       <div>
@@ -69,6 +75,7 @@ class App extends Component {
           />
           <button type="submit">Get the Weather</button>
         </form>
+        <button onClick={this.geolocation}>fgofgohigf</button>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
           ""
