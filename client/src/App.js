@@ -1,33 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import {getWeather} from './services/weather';
-import { isEmptyObject } from './utils';
-import HourlyWeather from './HourlyWeather';
+import { getWeather } from "./services/weather";
+import { isEmptyObject } from "./utils";
+import HourlyWeather from "./HourlyWeather";
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       lat: 0,
       lon: 0,
       hourlyWeather: {},
-      error: null,
+      error: null
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleLatChange(e){
+  handleLatChange(e) {
     this.setState({
       lat: +e.target.value
     });
   }
-  handleLonChange(e){
+  handleLonChange(e) {
     this.setState({
       lon: +e.target.value
     });
   }
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
@@ -50,15 +50,31 @@ class App extends Component {
         <h1>Weather</h1>
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>Latitude:</label>
-          <input onChange={(e)=>this.handleLatChange(e)} value={this.state.lat} step='.0001' type="number"/>
+          <input
+            min="-90"
+            max="90"
+            onChange={e => this.handleLatChange(e)}
+            value={this.state.lat}
+            step=".0001"
+            type="number"
+          />
           <label>Longitude:</label>
-          <input onChange={(e)=>this.handleLonChange(e)} value={this.state.lon} step='.0001' type="number"/>
-          <button type='submit'>Get the Weather</button>
+          <input
+            min="-180"
+            max="180"
+            onChange={e => this.handleLonChange(e)}
+            value={this.state.lon}
+            step=".0001"
+            type="number"
+          />
+          <button type="submit">Get the Weather</button>
         </form>
-        {this.state.error ? <h1>{this.state.error}</h1> : ''}
-        { isEmptyObject(this.state.hourlyWeather) ?
-          "" :
-            <HourlyWeather {...this.state.hourlyWeather}/>}
+        {this.state.error ? <h1>{this.state.error}</h1> : ""}
+        {isEmptyObject(this.state.hourlyWeather) ? (
+          ""
+        ) : (
+          <HourlyWeather {...this.state.hourlyWeather} />
+        )}
       </div>
     );
   }
