@@ -11,7 +11,10 @@ class App extends Component {
       lat: 0,
       lon: 0,
       hourlyWeather: {},
-      error: null
+      error: null,
+      streetAddress: '',
+      city: '',
+      state: '',
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
@@ -55,6 +58,15 @@ class App extends Component {
       })
     });
   }
+  handleStreetAddressChange(e) {
+    console.log('streetAdress changing');
+  }
+  handleCityChange (e) {
+    console.log('city changing');
+  }
+  handleStateChange(e){
+    console.log('state changing');
+  }
   render() {
     return (
       <div>
@@ -86,11 +98,20 @@ class App extends Component {
         <h3>Or Use Address:</h3>
         <form>
           <label>Street Address</label>
-          <input type="text" />
+          <input 
+            type="text"
+            value={this.state.streetAddress}
+            onChange={e => this.handleStreetAddressChange(e)} />
           <label>City</label>
-          <input type="text" />
+          <input 
+            type="text" 
+            value={this.state.city}
+            onChange = { e => this.handleCityChange(e)} />
           <label>State</label>
-          <input type="text" />
+          <input 
+            type="text"
+            value={this.state.state}
+            onChange = { e => this.handleStateChange(e)} />
           <button>Get Weather</button>
         </form>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
