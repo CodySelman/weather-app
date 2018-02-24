@@ -59,13 +59,19 @@ class App extends Component {
     });
   }
   handleStreetAddressChange(e) {
-    console.log('streetAdress changing');
+    this.setState({
+      streetAddress: e.target.value
+    });
   }
   handleCityChange (e) {
-    console.log('city changing');
+    this.setState({
+      city: e.target.value
+    });
   }
   handleStateChange(e){
-    console.log('state changing');
+    this.setState({
+      state: e.target.value
+    });
   }
   handleAddressSubmit(e){
     e.preventDefault();
