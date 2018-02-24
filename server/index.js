@@ -26,7 +26,7 @@ serverApp.get('/forecast/:lat,:lon', function(request, response){
 });
 
 serverApp.get('/geocode/:city,:state', function(request, response) {
-    const { streetAddress, city, state } = request.params;
+    const { city, state } = request.params;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city},${state}&key=${GOOGLEMAPS_API_KEY}`;
     axios.get(url)
         .then(res => {
