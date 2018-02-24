@@ -18,7 +18,7 @@ class App extends Component {
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLatLonSubmit = this.handleLatLonSubmit.bind(this);
     this.geolocation = this.geolocation.bind(this);
   }
   handleLatChange(e) {
@@ -31,7 +31,7 @@ class App extends Component {
       lon: +e.target.value
     });
   }
-  handleSubmit(e) {
+  handleLatLonSubmit(e) {
     e.preventDefault();
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
@@ -67,12 +67,16 @@ class App extends Component {
   handleStateChange(e){
     console.log('state changing');
   }
+  handleAddressSubmit(e){
+    e.preventDefault();
+    console.log('submitting address');
+  }
   render() {
     return (
       <div>
         <h1>Weather</h1>
         <h2>Please Provide:</h2>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form onSubmit={e => this.handleLatLonSubmit(e)}>
           <label>Latitude:</label>
           <input
             min="-90"
@@ -96,7 +100,7 @@ class App extends Component {
         <h3>Or:</h3>
         <button onClick={this.geolocation}>Use Geolocation</button>
         <h3>Or Use Address:</h3>
-        <form>
+        <form onSubmit={e => this.handleAddressSubmit(e)}>
           <label>Street Address</label>
           <input 
             type="text"
@@ -112,7 +116,7 @@ class App extends Component {
             type="text"
             value={this.state.state}
             onChange = { e => this.handleStateChange(e)} />
-          <button>Get Weather</button>
+          <button type='submit'>Get Weather</button>
         </form>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
