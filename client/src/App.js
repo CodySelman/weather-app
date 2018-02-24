@@ -59,6 +59,7 @@ class App extends Component {
     return (
       <div>
         <h1>Weather</h1>
+        <h2>Please Provide:</h2>
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>Latitude:</label>
           <input
@@ -80,7 +81,18 @@ class App extends Component {
           />
           <button type="submit">Get the Weather</button>
         </form>
+        <h3>Or:</h3>
         <button onClick={this.geolocation}>Use Geolocation</button>
+        <h3>Or Use Address:</h3>
+        <form>
+          <label>Street Address</label>
+          <input type="text" />
+          <label>City</label>
+          <input type="text" />
+          <label>State</label>
+          <input type="text" />
+          <button>Get Weather</button>
+        </form>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
           ""
