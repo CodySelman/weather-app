@@ -17,4 +17,12 @@ const FormHandler = props => {
     ) 
 }
 
+FormHandler.proptypes = {
+    handleLatLonSubmit: PropTypes.func.isRequired,
+    handleLatChange: PropTypes.func.isRequired,
+    handleLonChange: PropTypes.func.isRequired,
+    lat: PropTypes.number.isRequired,
+    lon: PropTypes.number.isRequired,
+}
+
 export default FormHandler;
