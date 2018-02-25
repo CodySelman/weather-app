@@ -1,3 +1,13 @@
+Things to do:
+
+- make hourly weather report an array of all available hour  data and display that on screen
+- do the same for daily data
+-overhaul UI
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
