@@ -145,7 +145,7 @@ class App extends Component {
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
           ""
-        ) : (
+        ) : ( 
           HourlyGrid
         )}
       </div>

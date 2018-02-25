@@ -1,8 +1,13 @@
 Things to do:
 
-- make hourly weather report an array of all available hour  data and display that on screen
-- do the same for daily data
+- Also return daily data in array on screen
 -overhaul UI
+
+UI thoughts:
+
+- begin by prompting user for location information
+- upon submit, completely overhaul screen to show stylized weather screen
+- Copy phone app layout for now
 
 
 
