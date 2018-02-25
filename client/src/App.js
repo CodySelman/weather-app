@@ -5,7 +5,6 @@ import { addressLookup } from './services/addressLookup';
 import { isEmptyObject } from "./utils";
 import HourlyWeather from "./HourlyWeather";
 import FormHandler from './FormHandler';
-import GeolocationForm from './GeolocationForm';
 
 class App extends Component {
   constructor() {
@@ -25,6 +24,7 @@ class App extends Component {
     this.handleAddressSubmit = this.handleAddressSubmit.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
     this.handleStateChange = this.handleStateChange.bind(this);
+    this.changeLocation = this.changeLocation.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -98,6 +98,11 @@ class App extends Component {
       }, this.runGetWeather())
     });
   }
+  changeLocation(){
+    this.setState({
+      hourlyWeather: []
+    })
+  }
   
   render() {
     const hourlyWeather = this.state.hourlyWeather;
@@ -110,24 +115,27 @@ class App extends Component {
     return (
       <div>
         <h1>Weather</h1>
-        <FormHandler 
-          handleLatLonSubmit={this.handleLatLonSubmit}
-          handleLatChange = {this.handleLatChange}
-          handleLonChange = {this.handleLonChange}
-          lat = {this.state.lat}
-          lon = {this.state.lon}
-          geolocation = {this.geolocation}
-          handleAddressSubmit = {this.handleAddressSubmit}
-          city = {this.state.city}
-          handleCityChange = {this.handleCityChange}
-          state = {this.state.state}
-          handleStateChange = {this.handleStateChange}
-        />
+        
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
-          ""
+          <FormHandler 
+            handleLatLonSubmit={this.handleLatLonSubmit}
+            handleLatChange = {this.handleLatChange}
+            handleLonChange = {this.handleLonChange}
+            lat = {this.state.lat}
+            lon = {this.state.lon}
+            geolocation = {this.geolocation}
+            handleAddressSubmit = {this.handleAddressSubmit}
+            city = {this.state.city}
+            handleCityChange = {this.handleCityChange}
+            state = {this.state.state}
+            handleStateChange = {this.handleStateChange}
+        />
         ) : ( 
-          HourlyGrid
+          <div>
+            <button onClick={this.changeLocation}>Change Location</button>
+            {HourlyGrid}
+          </div>
         )}
       </div>
     );
