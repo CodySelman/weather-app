@@ -23,6 +23,8 @@ class App extends Component {
     this.handleLatLonSubmit = this.handleLatLonSubmit.bind(this);
     this.geolocation = this.geolocation.bind(this);
     this.handleAddressSubmit = this.handleAddressSubmit.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -115,22 +117,12 @@ class App extends Component {
           lat = {this.state.lat}
           lon = {this.state.lon}
           geolocation = {this.geolocation}
+          handleAddressSubmit = {this.handleAddressSubmit}
+          city = {this.state.city}
+          handleCityChange = {this.handleCityChange}
+          state = {this.state.state}
+          handleStateChange = {this.handleStateChange}
         />
-        <button onClick={this.geolocation}>Use Geolocation</button>
-        <h3>Or Use Address:</h3>
-        <form onSubmit={e => this.handleAddressSubmit(e)}>
-          <label>City</label>
-          <input 
-            type="text" 
-            value={this.state.city}
-            onChange = { e => this.handleCityChange(e)} />
-          <label>State</label>
-          <input 
-            type="text"
-            value={this.state.state}
-            onChange = { e => this.handleStateChange(e)} />
-          <button type='submit'>Get Weather</button>
-        </form>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
           ""
