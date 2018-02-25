@@ -106,7 +106,6 @@ class App extends Component {
     return (
       <div>
         <h1>Weather</h1>
-        <h2>Please Provide:</h2>
         <form onSubmit={e => this.handleLatLonSubmit(e)}>
           <label>Latitude:</label>
           <input
