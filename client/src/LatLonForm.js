@@ -26,6 +26,14 @@ const LatLonForm = props => {
           <button type="submit">Get the Weather</button>
         </form>
     )
+};
+
+LatLonForm.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    handleLatChange: PropTypes.func.isRequired,
+    handleLonChange: PropTypes.func.isRequired,
+    lat: PropTypes.number.isRequired,
+    lon: PropTypes.number.isRequired
 }
 
 export default LatLonForm;

@@ -5,6 +5,7 @@ import { addressLookup } from './services/addressLookup';
 import { isEmptyObject } from "./utils";
 import HourlyWeather from "./HourlyWeather";
 import FormHandler from './FormHandler';
+import GeolocationForm from './GeolocationForm';
 
 class App extends Component {
   constructor() {
@@ -107,28 +108,13 @@ class App extends Component {
     return (
       <div>
         <h1>Weather</h1>
-        <form onSubmit={e => this.handleLatLonSubmit(e)}>
-          <label>Latitude:</label>
-          <input
-            min="-90"
-            max="90"
-            onChange={e => this.handleLatChange(e)}
-            value={this.state.lat}
-            step=".0001"
-            type="number"
-          />
-          <label>Longitude:</label>
-          <input
-            min="-180"
-            max="180"
-            onChange={e => this.handleLonChange(e)}
-            value={this.state.lon}
-            step=".0001"
-            type="number"
-          />
-          <button type="submit">Get the Weather</button>
-        </form>
-        <h3>Or:</h3>
+        <FormHandler 
+          handleLatLonSubmit={this.handleLatLonSubmit}
+          handleLatChange = {this.handleLatChange}
+          handleLonChange = {this.handleLonChange}
+          lat = {this.state.lat}
+          lon = {this.state.lon}
+        />
         <button onClick={this.geolocation}>Use Geolocation</button>
         <h3>Or Use Address:</h3>
         <form onSubmit={e => this.handleAddressSubmit(e)}>
@@ -144,13 +130,6 @@ class App extends Component {
             onChange = { e => this.handleStateChange(e)} />
           <button type='submit'>Get Weather</button>
         </form>
-        <FormHandler 
-          handleLatLonSubmit={this.handleLatLonSubmit}
-          handleLatChange = {this.handleLatChange}
-          handleLonChange = {this.handleLonChange}
-          lat = {this.state.lat}
-          lon = {this.state.lon}
-        />
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
           ""
