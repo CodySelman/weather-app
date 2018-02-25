@@ -79,7 +79,12 @@ class App extends Component {
     console.log('submitting address');
     addressLookup(this.state.city, this.state.state)
       .then(response => {
-        console.log(response);
+        const latitude = response.data.results[0].geometry.location.lat.toFixed(4);
+        const longitude = response.data.results[0].geometry.location.lng.toFixed(4);
+        this.setState({
+          lat: latitude,
+          lon: longitude,
+        })
       })
       .catch(error => {
         console.log(error);
