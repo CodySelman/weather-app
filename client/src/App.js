@@ -34,30 +34,7 @@ class App extends Component {
   }
   handleLatLonSubmit(e) {
     e.preventDefault();
-    getWeather(this.state.lat, this.state.lon)
-      .then(response => {
-        const hourlyWeather = response.data.hourly.data;
-        console.log(hourlyWeather);
-        this.setState({
-          hourlyWeather: hourlyWeather
-        });
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({
-          error: "Something is broke"
-        });
-      });
-  }
-  geolocation(){
-    navigator.geolocation.getCurrentPosition((position)=> {
-      const latitude = position.coords.latitude.toFixed(4);
-      const longitude = position.coords.longitude.toFixed(4);
-      this.setState({
-        lat: latitude,
-        lon: longitude
-      })
-    });
+    this.runGetWeather();
   }
   handleStreetAddressChange(e) {
     this.setState({
@@ -76,7 +53,6 @@ class App extends Component {
   }
   handleAddressSubmit(e){
     e.preventDefault();
-    console.log('submitting address');
     addressLookup(this.state.city, this.state.state)
       .then(response => {
         const latitude = response.data.results[0].geometry.location.lat.toFixed(4);
@@ -84,7 +60,7 @@ class App extends Component {
         this.setState({
           lat: latitude,
           lon: longitude,
-        })
+        }, this.runGetWeather())
       })
       .catch(error => {
         console.log(error);
@@ -93,6 +69,32 @@ class App extends Component {
         });
       });
   }
+  runGetWeather(){
+    getWeather(this.state.lat, this.state.lon)
+    .then(response => {
+      const hourlyWeather = response.data.hourly.data;
+      this.setState({
+        hourlyWeather: hourlyWeather
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      this.setState({
+        error: "getWeather failed"
+      });
+    });
+  }
+  geolocation(){
+    navigator.geolocation.getCurrentPosition((position)=> {
+      const latitude = position.coords.latitude.toFixed(4);
+      const longitude = position.coords.longitude.toFixed(4);
+      this.setState({
+        lat: latitude,
+        lon: longitude
+      }, this.runGetWeather())
+    });
+  }
+  
   render() {
     const hourlyWeather = this.state.hourlyWeather;
     const HourlyGrid = hourlyWeather.map((hourlyWeather, index) => <HourlyWeather key={index}
