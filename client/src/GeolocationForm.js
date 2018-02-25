@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 
 const GeolocationForm = props => {
     return (
-        <h1>Geolocation Form</h1>
+        <button onClick={props.geolocation}>Use Geolocation</button>
     )
+}
+
+GeolocationForm.propTypes = {
+    geolocation: PropTypes.func.isRequired
 }
 
 export default GeolocationForm;

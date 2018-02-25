@@ -114,6 +114,7 @@ class App extends Component {
           handleLonChange = {this.handleLonChange}
           lat = {this.state.lat}
           lon = {this.state.lon}
+          geolocation = {this.geolocation}
         />
         <button onClick={this.geolocation}>Use Geolocation</button>
         <h3>Or Use Address:</h3>
