@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const LatLonForm = props => {
-    const { handleSubmit, handleLatChange, handleLonChange, lat, lon}
+    const { handleSubmit, handleLatChange, handleLonChange, lat, lon} = props;
     return(
         <form onSubmit={e => props.handleSubmit(e)}>
           <label>Latitude:</label>

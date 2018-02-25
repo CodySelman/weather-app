@@ -4,6 +4,7 @@ import { getWeather } from "./services/weather";
 import { addressLookup } from './services/addressLookup';
 import { isEmptyObject } from "./utils";
 import HourlyWeather from "./HourlyWeather";
+import FormHandler from './FormHandler';
 
 class App extends Component {
   constructor() {
@@ -143,6 +144,13 @@ class App extends Component {
             onChange = { e => this.handleStateChange(e)} />
           <button type='submit'>Get Weather</button>
         </form>
+        <FormHandler 
+          handleLatLonSubmit={this.handleLatLonSubmit}
+          handleLatChange = {this.handleLatChange}
+          handleLonChange = {this.handleLonChange}
+          lat = {this.state.lat}
+          lon = {this.state.lon}
+        />
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
           ""
