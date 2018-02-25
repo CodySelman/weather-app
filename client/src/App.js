@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       lat: 0,
       lon: 0,
-      hourlyWeather: {},
+      hourlyWeather: [],
       error: null,
       city: '',
       state: '',
@@ -36,8 +36,8 @@ class App extends Component {
     e.preventDefault();
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
-        // temporarily importing just the current hours data here
-        const hourlyWeather = response.data.hourly.data[0];
+        const hourlyWeather = response.data.hourly.data;
+        console.log(hourlyWeather);
         this.setState({
           hourlyWeather: hourlyWeather
         });
@@ -94,6 +94,13 @@ class App extends Component {
       });
   }
   render() {
+    const hourlyWeather = this.state.hourlyWeather;
+    const HourlyGrid = hourlyWeather.map((hourlyWeather, index) => <HourlyWeather key={index}
+                                                                                summary={hourlyWeather.summary}
+                                                                                icon={hourlyWeather.icon}
+                                                                                time={hourlyWeather.time}
+                                                                                temperature={hourlyWeather.temperature} />
+                                                                              )
     return (
       <div>
         <h1>Weather</h1>
@@ -139,7 +146,7 @@ class App extends Component {
         {isEmptyObject(this.state.hourlyWeather) ? (
           ""
         ) : (
-          <HourlyWeather {...this.state.hourlyWeather} />
+          HourlyGrid
         )}
       </div>
     );
