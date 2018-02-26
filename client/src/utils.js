@@ -2,12 +2,10 @@ export const isEmptyObject = (obj) => Object.keys(obj).length === 0;
 
 export const convertTimeStamp = (seconds) => {
     const d = new Date(seconds * 1000); //convert to ms
-    //format mm/dd/YYYY HH:MM
-    const year = d.getFullYear();
-    const month = d.getMonth();
-    const day = d.getDate();
-    const hours = d.getHours();
-    const minutes = d.getMinutes();
-
-    return `${month + 1}/${day}/${year} ${hours}:${minutes}`;
+    let hours = d.getHours();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // if hours is 0, change it to 12
+    const displayHours = hours + ampm
+    return `${displayHours}`;
 }
