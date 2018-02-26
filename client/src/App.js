@@ -76,7 +76,8 @@ class App extends Component {
   runGetWeather(){
     getWeather(this.state.lat, this.state.lon)
     .then(response => {
-      const hourlyWeather = response.data.hourly.data;
+      const hourlyWeather = response.data.hourly.data.slice(0, 12);
+      console.log(hourlyWeather);
       this.setState({
         hourlyWeather: hourlyWeather
       });
@@ -114,7 +115,10 @@ class App extends Component {
                                                                               )
     return (
       <div>
-        <h1>Weather</h1>
+        <h1 className='text-center'>City Name</h1>
+        <h2 className='text-center'>Summary</h2>
+        <h2 className='text-center'>Temperature</h2>
+        
         
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
