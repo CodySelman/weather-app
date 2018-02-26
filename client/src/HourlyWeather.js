@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './hourlyWeather.css';
 
 import { convertTimeStamp } from './utils';
 
 const HourlyWeather = props => {
     return (
-      <section>
-        <ul>
-          <li>Summary: {props.summary}</li>
-          <li>Icon: {props.icon}</li>
-          <li>Time: {convertTimeStamp(props.time)}</li>
-          <li>Temperature: {props.temperature}&deg;F</li>
-        </ul>
-      </section>
+      <div className='HourlyWeather--container'>
+          <p>Summary: {props.summary}</p>
+          <p>Icon: {props.icon}</p>
+          <p>Time: {convertTimeStamp(props.time)}</p>
+          <p>Temperature: {props.temperature}&deg;F</p>
+      </div>
     )
 }
 //summary icon time temperature
