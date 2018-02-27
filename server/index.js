@@ -25,6 +25,7 @@ serverApp.get('/forecast/:lat,:lon', function(request, response){
     });
 });
 
+//lookup lat and lon by city and state
 serverApp.get('/geocode/:city,:state', function(request, response) {
     const { city, state } = request.params;
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city},${state}&key=${GOOGLEMAPS_API_KEY}`;
@@ -35,6 +36,21 @@ serverApp.get('/geocode/:city,:state', function(request, response) {
         .catch(err => {
             response.status(500).json({
                 msg: 'Geocoding Failed.'
+            })
+        });
+});
+
+//lookup city and state by lat and lon
+serverApp.get('/reverseGeocode/:lat,:lon', function(request, response) {
+    const {lat, lon} = request.params;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${GOOGLEMAPS_API_KEY}`;
+    axios.get(url)
+        .then(res => {
+            response.status(200).json(res.data);
+        })
+        .catch(err => {
+            response.status(500).json({
+                msg: 'Reverse Geocoding Failed.'
             })
         });
 });

@@ -3,6 +3,7 @@ import './App.css';
 
 import { getWeather } from "./services/weather";
 import { addressLookup } from './services/addressLookup';
+import { reverseAddressLookup } from './services/reverseAddressLookup';
 import { isEmptyObject } from "./utils";
 import HourlyWeather from "./HourlyWeather";
 import FormHandler from './FormHandler';
@@ -74,6 +75,24 @@ class App extends Component {
         });
       });
   }
+  getCityFromLatLon() {
+    console.log(this.state.lat, this.state.lon);
+    reverseAddressLookup(this.state.lat, this.state.lon)
+      .then(response => {
+        console.log(response);
+        const cityName = response.data.results[0].address_components[2].long_name;
+        this.setState({
+          city: cityName
+        })
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          error: 'reverseAddressLookup failed'
+        });
+      });
+    this.runGetWeather();
+  }
   runGetWeather() {
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
@@ -91,12 +110,12 @@ class App extends Component {
   }
   geolocation() {
     navigator.geolocation.getCurrentPosition((position) => {
-      const latitude = position.coords.latitude.toFixed(4);
-      const longitude = position.coords.longitude.toFixed(4);
+      const latitude = +position.coords.latitude.toFixed(4);
+      const longitude = +position.coords.longitude.toFixed(4);
       this.setState({
         lat: latitude,
         lon: longitude
-      }, this.runGetWeather())
+      }, this.getCityFromLatLon)
     });
   }
   changeLocation() {
