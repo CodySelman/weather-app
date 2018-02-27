@@ -114,10 +114,13 @@ class App extends Component {
       temperature={hourlyWeather.temperature} />
     )
     return (
-      <div>
-        <h1 className='text-center'>City Name</h1>
-        <h2 className='text-center'>Summary</h2>
-        <h2 className='text-center'>Temperature</h2>
+      <div className='App-container'>
+        <div className='App--header-container'>
+          <h1 className='App--header-text'>City Name</h1>
+          <h2 className='App--header-text'>Summary</h2>
+          <h2 className='App--header-text'>Temperature</h2>
+        </div>
+        
 
 
         {this.state.error ? <h1>{this.state.error}</h1> : ""}

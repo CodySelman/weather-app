@@ -1,3 +1,18 @@
+.App-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .flex {
     display: flex;
+}
+.text-center {
+}
+.App--header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.App-header-text {
 }
