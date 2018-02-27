@@ -1,5 +1,7 @@
-.HourlyWeather--container {
-    width: 100px;
+.HourlyWeather--card {
+    width: 150px;
+    height: 200px;
     display: inline-block;
     border: 1px solid black;
+    display: flex;
 }

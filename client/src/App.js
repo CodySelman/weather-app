@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './App.css';
 
 import { getWeather } from "./services/weather";
 import { addressLookup } from './services/addressLookup';
@@ -137,7 +138,7 @@ class App extends Component {
         ) : (
             <div>
               <button onClick={this.changeLocation}>Change Location</button>
-              <div>
+              <div className='flex'>
                 {HourlyGrid}
               </div>
             </div>

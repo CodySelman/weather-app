@@ -6,7 +6,7 @@ import { convertTimeStamp } from './utils';
 
 const HourlyWeather = props => {
     return (
-      <div className='HourlyWeather--container'>
+      <div className='HourlyWeather--card'>
           <p>{props.summary}</p>
           <p>{props.icon}</p>
           <p>{convertTimeStamp(props.time)}</p>
