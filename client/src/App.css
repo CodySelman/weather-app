@@ -6,8 +6,6 @@
 .flex {
     display: flex;
 }
-.text-center {
-}
 .App--header-container {
     display: flex;
     justify-content: center;
