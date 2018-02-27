@@ -115,14 +115,6 @@ class App extends Component {
     )
     return (
       <div className='App-container'>
-        <div className='App--header-container'>
-          <h1 className='App--header-text'>City Name</h1>
-          <h2 className='App--header-text'>Summary</h2>
-          <h2 className='App--header-text'>Temperature</h2>
-        </div>
-        
-
-
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
         {isEmptyObject(this.state.hourlyWeather) ? (
           <FormHandler
@@ -140,6 +132,12 @@ class App extends Component {
           />
         ) : (
             <div>
+              <div className='App--header-container'>
+                <h1 className='App--header-text'>{this.state.city}</h1>
+                <h2 className='App--header-text'>{this.state.hourlyWeather[0].summary}</h2>
+                <h2 className='App--header-text'>{this.state.hourlyWeather[0].temperature.toFixed(0)}&deg;F</h2>
+              </div>
+
               <button onClick={this.changeLocation}>Change Location</button>
               <div className='flex'>
                 {HourlyGrid}

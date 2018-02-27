@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const GeolocationForm = props => {
     return (
-        <button onClick={props.geolocation}>Use Geolocation</button>
+            <button onClick={props.geolocation}>Use Geolocation</button>
     )
 }
 
