@@ -26,7 +26,7 @@ const LatLonForm = props => {
             step=".0001"
             type="number"
           />
-          <button className='LatLonForm-button' type="submit">Get the Weather</button>
+          <button className='LatLonForm-button' type="submit">Get Weather</button>
         </form>
     )
 };

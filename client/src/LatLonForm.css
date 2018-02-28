@@ -1,6 +1,8 @@
 .LatLonForm--container {
     display: flex;
     align-content: center;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
 }
 .LatLonForm-text {
     color: white;
@@ -19,4 +21,8 @@
     color: #24282a;
     background-color: white;
     margin-left: 1rem;
+}
+.GeolocationForm-button {
+    margin-bottom: 1rem;
+    height: 3rem;
 }

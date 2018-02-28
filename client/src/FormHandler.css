@@ -1,4 +1,28 @@
 .FormHandler--container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.FormHandler-heading {
+    color: white;
+    font-size: 6rem;
+}
+.FormHandler--heading-container {
+    display: flex;
+    align-items: center;
+}
+.FormHandler--heading-image {
+    width: 128px;
+    height: 128px;
+    margin: 3rem;
+}
+.FormHandler--divider-text {
+    color: white;
+    font-size: 1.5rem;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    width: 75%;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }

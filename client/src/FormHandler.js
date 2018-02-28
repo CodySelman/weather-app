@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './FormHandler.css';
+import images from './images';
 
 //Components
 import LatLonForm from './LatLonForm';
@@ -10,22 +12,32 @@ const FormHandler = props => {
     //props go here
     return(
         <div className='FormHandler--container'>
-            <LatLonForm 
+            <div className='FormHandler--heading-container'>
+                <img className='FormHandler--heading-image' src={images('cloudy')} />
+                <h1 className='FormHandler-heading'>
+                    Weather
+                </h1>
+                <img className='FormHandler--heading-image' src={images('cloudy')} />
+            </div>
+            
+            <LatLonForm
                 handleSubmit = {props.handleLatLonSubmit}
                 handleLatChange = {props.handleLatChange}
                 handleLonChange = {props.handleLonChange}
                 lat = {props.lat}
                 lon = {props.lon}
             />
-            <GeolocationForm 
-                geolocation = {props.geolocation}
-            />
+            <p className='FormHandler--divider-text'>Or:</p>
             <AddressForm 
                 handleSubmit = {props.handleAddressSubmit}
                 city = {props.city}
                 handleCityChange = {props.handleCityChange}
                 state = {props.state}
                 handleStateChange = {props.handleStateChange}
+            />
+            <p className='FormHandler--divider-text'>Or:</p>
+            <GeolocationForm 
+                geolocation = {props.geolocation}
             />
         </div>
     ) 

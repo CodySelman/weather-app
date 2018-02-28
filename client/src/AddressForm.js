@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './LatLonForm.css';
 
 const AddressForm = props => {
     return (
-        <form onSubmit={e => props.handleSubmit(e)}>
-          <label>City</label>
-          <input 
+        <form className='LatLonForm--container' onSubmit={e => props.handleSubmit(e)}>
+          <label className='LatLonForm-text'>City</label>
+          <input className='LatLonForm-input'
             type="text" 
             value={props.city}
             onChange = { e => props.handleCityChange(e)} />
-          <label>State</label>
-          <input 
+          <label className='LatLonForm-text'>State</label>
+          <input className='LatLonForm-input'
             type="text"
             value={props.state}
             onChange = { e => props.handleStateChange(e)} />
-          <button type='submit'>Get Weather</button>
+          <button className='LatLonForm-button' type='submit'>Get Weather</button>
         </form>
     )
 }
