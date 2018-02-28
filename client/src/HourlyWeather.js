@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import './hourlyWeather.css';
 
 import { convertTimeStamp } from './utils';
+import images from './images';
 
 const HourlyWeather = props => {
     return (
       <div className='HourlyWeather--card'>
-          <p>{props.summary}</p>
-          <img src={props.icon + '.png'} />
           <p>{convertTimeStamp(props.time)}</p>
+          <img src={images(props.icon)} />
           <p>{props.temperature.toFixed(0)}&deg;F</p>
       </div>
     )
