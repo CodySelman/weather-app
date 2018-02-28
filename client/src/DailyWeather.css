@@ -1,3 +1,15 @@
 .DailyWeather--card {
     list-style-type: none;
 }
+.DailyWeather--card-day {
+    color:white;
+}
+.DailyWeather--card-icon {
+
+}
+.DailyWeather--card-tempHigh {
+    color:white;
+}
+.DailyWeather--card-tempLow {
+    color:white;
+}

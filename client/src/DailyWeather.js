@@ -9,10 +9,10 @@ const DailyWeather = props => {
     return(
         <div>
             <ul className='DailyWeather--card'>
-                <li>{convertTimeStampToDays(props.time)}</li>
-                <li>{props.icon}</li>
-                <li>{props.temperatureLow}</li>
-                <li>{props.temperatureHigh}</li>
+                <li className='DailyWeather--card-day'>{convertTimeStampToDays(props.time)}</li>
+                <li className='DailyWeather--card-icon'>{props.icon}</li>
+                <li className='DailyWeather--card-tempHigh'>{props.temperatureHigh}</li>
+                <li className='DailyWeather--card-tempLow'>{props.temperatureLow}</li>
             </ul>
         </div>
     )
