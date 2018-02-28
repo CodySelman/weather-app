@@ -14,7 +14,7 @@ const HourlyWeather = props => {
       </div>
     )
 }
-//summary icon time temperature
+
 HourlyWeather.propTypes = {
     summary: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
