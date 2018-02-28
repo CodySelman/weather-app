@@ -167,14 +167,16 @@ class App extends Component {
               <div className='App--header-container'>
                 <h1 className='App--header-text App--header-city'>{this.state.city}</h1>
                 <h2 className='App--header-text App--header-summary'>{this.state.hourlyWeather[0].summary}</h2>
-                <h2 className='App--header-text App--header-temperature'>{this.state.hourlyWeather[0].temperature.toFixed(0)}&deg;F</h2>
+                <h2 className='App--header-text App--header-temperature'>{this.state.hourlyWeather[0].temperature.toFixed(0)}&deg;</h2>
               </div>
 
-              <button onClick={this.changeLocation}>Change Location</button>
-              <div className='flex'>
+              <div className='App--HourlyWeather-container'>
                 {HourlyGrid}
               </div>
               {DailyGrid}
+              <div className='App--footer-button-container'>
+                <button className='App--footer-button' onClick={this.changeLocation}>Change Location</button>
+              </div>
             </div>
           )}
       </div>

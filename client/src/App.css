@@ -34,3 +34,20 @@ body,html {
     margin-top: 0.5rem;
     margin-bottom: 0;
 }
+.App--HourlyWeather-container {
+    display: flex;
+    justify-content: center;
+}
+.App--footer-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.App--footer-button {
+    width: 30%;
+    height: 75px;
+    font-size: 2rem;
+    border-radius: 5px;
+    color: #24282a;
+    background-color: white;
+}
