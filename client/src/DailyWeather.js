@@ -1,11 +1,15 @@
 import React from 'react';
 import Proptypes from 'prop-types';
+import './DailyWeather.css';
+
+import { convertTimeStampToDays } from './utils';
+import images from './images';
 
 const DailyWeather = props => {
     return(
         <div>
-            <ul>
-                <li>{props.time}</li>
+            <ul className='DailyWeather--card'>
+                <li>{convertTimeStampToDays(props.time)}</li>
                 <li>{props.icon}</li>
                 <li>{props.temperatureLow}</li>
                 <li>{props.temperatureHigh}</li>

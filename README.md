@@ -1,5 +1,6 @@
 Things to do:
 
+-Add more hourly data, try to render hourly data inside scroll bar window component
 - Also return daily data in array on screen
 -overhaul UI
 
