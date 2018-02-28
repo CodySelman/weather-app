@@ -152,9 +152,9 @@ class App extends Component {
         ) : (
             <div>
               <div className='App--header-container'>
-                <h1 className='App--header-text'>{this.state.city}</h1>
-                <h2 className='App--header-text'>{this.state.hourlyWeather[0].summary}</h2>
-                <h2 className='App--header-text'>{this.state.hourlyWeather[0].temperature.toFixed(0)}&deg;F</h2>
+                <h1 className='App--header-text App--header-city'>{this.state.city}</h1>
+                <h2 className='App--header-text App--header-summary'>{this.state.hourlyWeather[0].summary}</h2>
+                <h2 className='App--header-text App--header-temperature'>{this.state.hourlyWeather[0].temperature.toFixed(0)}&deg;F</h2>
               </div>
 
               <button onClick={this.changeLocation}>Change Location</button>
