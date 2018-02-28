@@ -16,5 +16,6 @@ body,html {
     align-items: center;
     flex-direction: column;
 }
-.App-header-text {
+.App--header-text {
+    color: white;
 }

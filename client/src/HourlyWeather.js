@@ -8,9 +8,9 @@ import images from './images';
 const HourlyWeather = props => {
     return (
       <div className='HourlyWeather--card'>
-          <p>{convertTimeStamp(props.time)}</p>
+          <p className='HourlyWeather--card-text'>{convertTimeStamp(props.time)}</p>
           <img src={images(props.icon)} />
-          <p>{props.temperature.toFixed(0)}&deg;F</p>
+          <p className='HourlyWeather--card-text'>{props.temperature.toFixed(0)}&deg;F</p>
       </div>
     )
 }
