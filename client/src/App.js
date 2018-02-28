@@ -6,6 +6,7 @@ import { addressLookup } from './services/addressLookup';
 import { reverseAddressLookup } from './services/reverseAddressLookup';
 import { isEmptyObject } from "./utils";
 import HourlyWeather from "./HourlyWeather";
+import DailyWeather from './DailyWeather';
 import FormHandler from './FormHandler';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
       lat: 0,
       lon: 0,
       hourlyWeather: [],
+      dailyWeather: [],
       error: null,
       city: '',
       state: '',
@@ -79,7 +81,6 @@ class App extends Component {
     console.log(this.state.lat, this.state.lon);
     reverseAddressLookup(this.state.lat, this.state.lon)
       .then(response => {
-        console.log(response);
         const cityName = response.data.results[0].address_components[2].long_name;
         this.setState({
           city: cityName
@@ -97,8 +98,13 @@ class App extends Component {
     getWeather(this.state.lat, this.state.lon)
       .then(response => {
         const hourlyWeather = response.data.hourly.data.slice(0, 12);
+        const dailyWeather = response.data.daily.data;
+        console.log(dailyWeather);
         this.setState({
           hourlyWeather: hourlyWeather
+        });
+        this.setState({
+          dailyWeather: dailyWeather
         });
       })
       .catch(error => {
@@ -132,6 +138,8 @@ class App extends Component {
       time={hourlyWeather.time}
       temperature={hourlyWeather.temperature} />
     )
+    const dailyWeather = this.state.dailyWeather;
+    const DailyGrid = dailyWeather.map((dailyWeather, index) => <DailyWeather />)
     return (
       <div className='App-container'>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
@@ -161,6 +169,7 @@ class App extends Component {
               <div className='flex'>
                 {HourlyGrid}
               </div>
+              {DailyGrid}
             </div>
           )}
       </div>
