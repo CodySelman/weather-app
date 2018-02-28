@@ -12,6 +12,7 @@
     align-items: center;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    margin-bottom: 1rem;
 }
 .HourlyWeather--card-time {
     color: white;
