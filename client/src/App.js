@@ -129,6 +129,9 @@ class App extends Component {
       hourlyWeather: []
     })
   }
+  componentDidMount(){
+    this.geolocation();
+  }
 
   render() {
     const hourlyWeather = this.state.hourlyWeather;

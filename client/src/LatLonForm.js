@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './LatLonForm.css';
 
 const LatLonForm = props => {
     // not sure what this line is here but it is used in the github metrics
     // project so I kept it in to ask justin about it later
     // const { handleSubmit, handleLatChange, handleLonChange, lat, lon} = props;
     return(
-        <form onSubmit={e => props.handleSubmit(e)}>
-          <label>Latitude:</label>
-          <input
+        <form className='LatLonForm--container' onSubmit={e => props.handleSubmit(e)}>
+          <label className='LatLonForm-text'>Latitude:</label>
+          <input className='LatLonForm-input'
             min="-90"
             max="90"
             onChange={e => props.handleLatChange(e)}
@@ -16,8 +17,8 @@ const LatLonForm = props => {
             step=".0001"
             type="number"
           />
-          <label>Longitude:</label>
-          <input
+          <label className='LatLonForm-text'>Longitude:</label>
+          <input className='LatLonForm-input'
             min="-180"
             max="180"
             onChange={e => props.handleLonChange(e)}
@@ -25,7 +26,7 @@ const LatLonForm = props => {
             step=".0001"
             type="number"
           />
-          <button type="submit">Get the Weather</button>
+          <button className='LatLonForm-button' type="submit">Get the Weather</button>
         </form>
     )
 };

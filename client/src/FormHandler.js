@@ -9,7 +9,7 @@ import AddressForm from './AddressForm';
 const FormHandler = props => {
     //props go here
     return(
-        <div>
+        <div className='FormHandler--container'>
             <LatLonForm 
                 handleSubmit = {props.handleLatLonSubmit}
                 handleLatChange = {props.handleLatChange}

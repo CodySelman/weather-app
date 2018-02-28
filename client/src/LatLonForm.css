@@ -1,0 +1,22 @@
+.LatLonForm--container {
+    display: flex;
+    align-content: center;
+}
+.LatLonForm-text {
+    color: white;
+    font-size: 3rem;
+    margin: 1rem;
+}
+.LatLonForm-input {
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: #24282a;
+    color: white;
+}
+.LatLonForm-button {
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color: #24282a;
+    background-color: white;
+    margin-left: 1rem;
+}

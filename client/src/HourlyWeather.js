@@ -10,7 +10,7 @@ const HourlyWeather = props => {
       <div className='HourlyWeather--card'>
           <p className='HourlyWeather--card-time'>{convertTimeStampToHours(props.time)}</p>
           <img className='HourlyWeather--card-icon' src={images(props.icon)} />
-          <p className='HourlyWeather--card-temperature'>{props.temperature.toFixed(0)}&deg;F</p>
+          <p className='HourlyWeather--card-temperature'>{props.temperature.toFixed(0)}&deg;</p>
       </div>
     )
 }
