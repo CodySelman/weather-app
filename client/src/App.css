@@ -1,3 +1,7 @@
+body,html {
+    background-color: #24282a;
+}
+
 .App-container {
     display: flex;
     flex-direction: column;

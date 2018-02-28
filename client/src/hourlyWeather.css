@@ -1,6 +1,7 @@
 .HourlyWeather--card {
-    width: 150px;
-    height: 200px;
+    width: 128px;
+    min-width: 128px;
+    height: 300px;
     display: inline-block;
     border: 1px solid black;
     display: flex;
