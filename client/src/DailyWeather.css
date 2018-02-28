@@ -1,15 +1,25 @@
+.DailyWeather--container {
+    display: flex;
+}
 .DailyWeather--card {
     list-style-type: none;
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .DailyWeather--card-day {
+    font-size: 2rem;
     color:white;
+    width: 20%;
 }
 .DailyWeather--card-icon {
-
+    width: 64px;
+    height: 64px;
 }
-.DailyWeather--card-tempHigh {
-    color:white;
-}
-.DailyWeather--card-tempLow {
+.DailyWeather--card-temp {
+    font-size: 2rem;
     color:white;
 }

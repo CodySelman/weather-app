@@ -7,12 +7,13 @@ import images from './images';
 
 const DailyWeather = props => {
     return(
-        <div>
+        <div className='DailyWeather--container'>
             <ul className='DailyWeather--card'>
                 <li className='DailyWeather--card-day'>{convertTimeStampToDays(props.time)}</li>
-                <li className='DailyWeather--card-icon'>{props.icon}</li>
-                <li className='DailyWeather--card-tempHigh'>{props.temperatureHigh}</li>
-                <li className='DailyWeather--card-tempLow'>{props.temperatureLow}</li>
+                <li className='DailyWeather--card-icon'>
+                    <img className='DailyWeather--card-icon' src={images(props.icon)}/>
+                </li>
+                <li className='DailyWeather--card-temp'>{props.temperatureHigh}&deg; | {props.temperatureLow}&deg;</li>
             </ul>
         </div>
     )
