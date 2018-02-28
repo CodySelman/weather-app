@@ -139,7 +139,11 @@ class App extends Component {
       temperature={hourlyWeather.temperature} />
     )
     const dailyWeather = this.state.dailyWeather;
-    const DailyGrid = dailyWeather.map((dailyWeather, index) => <DailyWeather />)
+    const DailyGrid = dailyWeather.map((dailyWeather, index) => <DailyWeather key={index}
+      time={dailyWeather.time}
+      icon={dailyWeather.icon}
+      temperature={dailyWeather.temperature} />
+    )
     return (
       <div className='App-container'>
         {this.state.error ? <h1>{this.state.error}</h1> : ""}
