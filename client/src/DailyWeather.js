@@ -9,7 +9,7 @@ const DailyWeather = props => {
     return(
         <div className='DailyWeather--container'>
             <ul className='DailyWeather--card'>
-                <li className='DailyWeather--card-day'>{convertTimeStampToDays(props.time)}</li>
+                <li className='DailyWeather--card-day'>{props.index ? convertTimeStampToDays(props.time) : 'Today'}</li>
                 <li className='DailyWeather--card-icon'>
                     <img className='DailyWeather--card-icon' src={images(props.icon)}/>
                 </li>

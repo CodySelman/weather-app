@@ -9,13 +9,12 @@ const HourlyWeather = props => {
   return (
     <div className="HourlyWeather--card">
       <p className="HourlyWeather--card-time">
-        {convertTimeStampToHours(props.time)}
+        {props.index ? convertTimeStampToHours(props.time) : 'Now'}
       </p>
       <img className="HourlyWeather--card-icon" src={images(props.icon)} />
       <p className="HourlyWeather--card-temperature">
         {props.temperature.toFixed(0)}&deg;
       </p>
-      {console.log(props)}
     </div>
   );
 };

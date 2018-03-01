@@ -137,14 +137,16 @@ class App extends Component {
       summary={hourlyWeather.summary}
       icon={hourlyWeather.icon}
       time={hourlyWeather.time}
-      temperature={hourlyWeather.temperature} />
+      temperature={hourlyWeather.temperature}
+      index={index} />
     )
     const dailyWeather = this.state.dailyWeather;
     const DailyGrid = dailyWeather.map((dailyWeather, index) => <DailyWeather key={index}
       time={dailyWeather.time}
       icon={dailyWeather.icon}
       temperatureHigh={dailyWeather.temperatureHigh.toFixed(0)}
-      temperatureLow={dailyWeather.temperatureLow.toFixed(0)} />
+      temperatureLow={dailyWeather.temperatureLow.toFixed(0)}
+      index={index} />
     )
     return (
       <div className='App-container'>
