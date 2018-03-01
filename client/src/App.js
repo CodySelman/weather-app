@@ -78,7 +78,6 @@ class App extends Component {
       });
   }
   getCityFromLatLon() {
-    console.log(this.state.lat, this.state.lon);
     reverseAddressLookup(this.state.lat, this.state.lon)
       .then(response => {
         const cityName = response.data.results[0].address_components[2].long_name;
@@ -99,7 +98,6 @@ class App extends Component {
       .then(response => {
         const hourlyWeather = response.data.hourly.data.slice(0, 12);
         const dailyWeather = response.data.daily.data;
-        console.log(dailyWeather);
         this.setState({
           hourlyWeather: hourlyWeather
         });
