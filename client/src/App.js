@@ -29,6 +29,7 @@ class App extends Component {
     this.handleCityChange = this.handleCityChange.bind(this);
     this.handleStateChange = this.handleStateChange.bind(this);
     this.changeLocation = this.changeLocation.bind(this);
+    this.runGetWeather = this.runGetWeather.bind(this);
   }
   handleLatChange(e) {
     this.setState({
@@ -42,7 +43,10 @@ class App extends Component {
   }
   handleLatLonSubmit(e) {
     e.preventDefault();
-    this.runGetWeather();
+    this.setState({
+      city: '',
+      state: '',
+    }, this.runGetWeather)
   }
   handleStreetAddressChange(e) {
     this.setState({
@@ -81,6 +85,7 @@ class App extends Component {
     reverseAddressLookup(this.state.lat, this.state.lon)
       .then(response => {
         const cityName = response.data.results[0].address_components[2].long_name;
+        console.log(cityName);
         this.setState({
           city: cityName
         })
@@ -99,11 +104,10 @@ class App extends Component {
         const hourlyWeather = response.data.hourly.data.slice(0, 12);
         const dailyWeather = response.data.daily.data;
         this.setState({
-          hourlyWeather: hourlyWeather
+          hourlyWeather: hourlyWeather,
+          dailyWeather: dailyWeather,
         });
-        this.setState({
-          dailyWeather: dailyWeather
-        });
+        this.getCityFromLatLon;
       })
       .catch(error => {
         console.log(error);
@@ -118,7 +122,9 @@ class App extends Component {
       const longitude = +position.coords.longitude.toFixed(4);
       this.setState({
         lat: latitude,
-        lon: longitude
+        lon: longitude,
+        city: '',
+        state: '',
       }, this.getCityFromLatLon)
     });
   }
