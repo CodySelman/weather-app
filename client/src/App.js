@@ -68,7 +68,7 @@ class App extends Component {
         this.setState({
           lat: latitude,
           lon: longitude,
-        }, this.runGetWeather())
+        }, this.runGetWeather)
       })
       .catch(error => {
         console.log(error);
